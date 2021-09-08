@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { HashRouter, Switch, Route, Redirect } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import Header from "./components/Header";
 import Home from "./components/Home";
 import List from "./components/List";
@@ -35,7 +35,7 @@ function App() {
       {isLoading && <Loading />}
       <LoadingContext.Provider value={{ isLoading, setIsLoading }}>
         <PostContext.Provider value={{ post, setPost }}>
-          <HashRouter>
+          <BrowserRouter>
             <Layout>
               <Header />
               <Content
@@ -56,7 +56,7 @@ function App() {
                 Made with ♥ by Jason
               </Footer>
             </Layout>
-          </HashRouter>
+          </BrowserRouter>
         </PostContext.Provider>
       </LoadingContext.Provider>
     </AuthContext.Provider>
