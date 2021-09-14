@@ -13,6 +13,14 @@ export default function Header() {
   const { Header } = Layout;
   const [isModalVisible, setIsModalVisible] = useState(false);
 
+  const getSelectedKey = () => {
+    const pathname = location.pathname;
+    console.log(pathname)
+    if (pathname.indexOf("/list") === 0) return "list";
+    if (pathname.indexOf("/about") === 0) return "about";
+    if (pathname.indexOf("/addPost") === 0) return "addPost";
+    return "/";
+  };
   const handleLogout = () => {
     setAuthToken("");
     setUser(null);
@@ -33,17 +41,17 @@ export default function Header() {
   };
   return (
     <Header className="fixed w-100 z-5">
-      <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["1"]}>
+      <Menu theme="dark" mode="horizontal" defaultSelectedKeys={[getSelectedKey()]}>
         <Menu.Item key="/">
           <Link to="/">首頁</Link>
         </Menu.Item>
-        <Menu.Item key="/list">
+        <Menu.Item key="list">
           <Link to="/list">文章列表</Link>
         </Menu.Item>
-        <Menu.Item key="/about">
+        <Menu.Item key="about">
           <Link to="/about">關於我</Link>
         </Menu.Item>
-        <Menu.Item key="/addPost">
+        <Menu.Item key="addPost">
           <Link to="/addPost">新增文章</Link>
         </Menu.Item>
       </Menu>

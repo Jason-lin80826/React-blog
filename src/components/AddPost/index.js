@@ -49,7 +49,7 @@ export default function AddPost() {
       className="site-layout-background"
       style={{ padding: 24, minHeight: 830, margin: "16px 0" }}
     >
-      {user && (
+      {user?  (
         <Form
           {...layout}
           name="nest-messages"
@@ -86,7 +86,7 @@ export default function AddPost() {
             </Button>
           </Form.Item>
         </Form>
-      )}
+      ) : '先去登入喔' }
     </div>
   );
 }

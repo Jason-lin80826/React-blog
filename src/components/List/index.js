@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Link, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { LoadingContext, PostContext } from "../../contexts";
-import { getAllArticle, getArticle } from "../../WebApi";
+import { getArticle } from "../../WebApi";
 import { List as AntdList } from "antd";
 
 export default function List() {
@@ -20,7 +20,6 @@ export default function List() {
       })
       .then((data) => {
         setPosts(data);
-        console.log(data);
         setIsLoading(false);
       });
   }, [page, setPosts]);

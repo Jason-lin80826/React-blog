@@ -16,6 +16,7 @@ export default function LoginForm(props) {
     setIsLoading(true);
     login(username, password).then((data) => {
       if (data.ok === 0) {
+        setIsLoading(false);
         return message.error("帳號密碼錯誤");
       }
       setAuthToken(data.token);
