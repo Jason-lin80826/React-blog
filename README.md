@@ -1,6 +1,8 @@
 ## 專案簡介
 
 這是一個是用 Ant Design 為 UI Library 配合 React 開發的部落格網頁配合後段使用 JWT 完成登入驗證機制的簡易部落格~~
+- 帳號: user01
+- 密碼: Lidemy
 
 ### 功能
 
