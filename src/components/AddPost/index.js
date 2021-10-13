@@ -1,9 +1,8 @@
-import React, { useContext } from "react";
-import { Form, Input, Button, message } from "antd";
-import { AuthContext, LoadingContext } from "../../contexts";
-import { postNewPost } from "../../WebApi";
-import { useHistory } from "react-router-dom";
-import { setAuthToken } from "../../utils";
+import React, { useContext } from 'react';
+import { Form, Input, Button, message } from 'antd';
+import { AuthContext, LoadingContext } from '../../contexts';
+import { postNewPost } from '../../WebApi';
+import { useHistory } from 'react-router-dom';
 
 const layout = {
   labelCol: {
@@ -16,12 +15,12 @@ const layout = {
 /* eslint-disable no-template-curly-in-string */
 
 const validateMessages = {
-  required: "${label} is required!",
+  required: '${label} is required!',
 };
 
 export default function AddPost() {
   const { setIsLoading } = useContext(LoadingContext);
-  const { user, setUser } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const history = useHistory();
 
   const onFinish = (values) => {
@@ -31,25 +30,25 @@ export default function AddPost() {
     postNewPost(title, content)
       .then((data) => {
         if (data.code === 2) {
-          history.push("/");
+          history.push('/');
           setIsLoading(false);
-          return message.error("請先登入");
+          return message.error('請先登入');
         }
-        history.push("/list");
-        message.success("新增成功");
+        history.push('/list');
+        message.success('新增成功');
         setIsLoading(false);
       })
       .catch(() => {
         setIsLoading(false);
-        return message.error("新增失敗");
+        return message.error('新增失敗');
       });
   };
   return (
     <div
       className="site-layout-background"
-      style={{ padding: 24, minHeight: 830, margin: "16px 0" }}
+      style={{ padding: 24, minHeight: 859, margin: '16px 0' }}
     >
-      {user?  (
+      {user ? (
         <Form
           {...layout}
           name="nest-messages"
@@ -57,24 +56,24 @@ export default function AddPost() {
           validateMessages={validateMessages}
         >
           <Form.Item
-            name={["post", "title"]}
+            name={['post', 'title']}
             label="文章標題"
             rules={[
               {
                 required: true,
-                message: "請輸入文章標題",
+                message: '請輸入文章標題',
               },
             ]}
           >
             <Input />
           </Form.Item>
           <Form.Item
-            name={["post", "content"]}
+            name={['post', 'content']}
             label="文章內容"
             rules={[
               {
                 required: true,
-                message: "請輸入文章內容",
+                message: '請輸入文章內容',
               },
             ]}
           >
@@ -86,7 +85,9 @@ export default function AddPost() {
             </Button>
           </Form.Item>
         </Form>
-      ) : '先去登入喔' }
+      ) : (
+        '先去登入喔'
+      )}
     </div>
   );
 }

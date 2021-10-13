@@ -36,7 +36,7 @@ export default function List() {
   return (
     <div
       className="site-layout-background"
-      style={{ padding: 24, minHeight: 830, margin: "16px 0" }}
+      style={{ padding: 24, minHeight: 859, margin: "16px 0" }}
     >
       <AntdList
         itemLayout="horizontal"
